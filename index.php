@@ -24,6 +24,7 @@
 				<form class="form-search" method="POST">
 					<!--<div class="form-inline">-->		
 						<div class="form-group">
+							<!-- onkeyup para os valores serem automaticamentes enviados a função -->
 							<input type="text" name="search" onkeyup="Search(this.value);" id="search" class="search form-control" placeholder="search"/>
 						</div>				
 					<!--</div>-->
@@ -42,13 +43,13 @@
 	<script type="text/javascript">
 		function Search(e) {
 			
-				$.get('search.php?f=search&s=' + e, {
+				$.get('search.php?f=search&s=' + e, { // Método GET, direcionando a url
 					
 				}, function (data) {
 					if(data.status == 200) {
-						$('.result').html(data.html);
+						$('.result').html(data.html); // Div resulta apresentá os resultados
 					} else {
-						$('.result').html('<h4>No result!</h4>');
+						$('.result').html('<h4>No result!</h4>'); // Div resulta apresentá os resultados
 					}
 				});
 			

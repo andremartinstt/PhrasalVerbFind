@@ -9,7 +9,7 @@ if(!empty($_GET['f'])) {
 	$f = '';
 }
 
-if(!empty($_GET['s'])) {
+if(!empty($_GET['s'])) { // O valor pesquisado em si
 	$s = mysqli_real_escape_string($connect, $_GET['s']);
 } else {
 	$s = '';
@@ -17,11 +17,11 @@ if(!empty($_GET['s'])) {
 
 if($f == 'search') {
 	
-	if(!empty($s)) {
+	if(!empty($s)) { // Se for diferente de vazio
 		
-		if(Search($s)) {
+		if(Search($s)) { // Se for retornado algum valor
 			
-			$html = '';
+			$html = ''; // Variável começa como vazio
 					
 			$html_fi = Search($s);
 					
@@ -31,12 +31,12 @@ if($f == 'search') {
 			
 			$data = array(
 				'status' => 200,
-				'html' => $html
+				'html' => $html // Conteúdo que será retornado
 			);
 			
 		} else {
 			$data = array(
-				'status' => 400
+				'status' => 400 // Indica que ouve falha
 			);
 		}
 		
@@ -47,7 +47,7 @@ if($f == 'search') {
 		);
 	}
 	
-	header("Content-Type: application/json");
+	header("Content-Type: application/json"); // Retorna uma aplicação em json
 	echo json_encode($data);
 	exit();
 }
